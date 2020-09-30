@@ -11,6 +11,9 @@ library(shiny)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output) {
+    output$Farmaco <- renderText({
+        as.character(input$farmaco)
+    })
 
     output$distPlot <- renderPlot({
 
