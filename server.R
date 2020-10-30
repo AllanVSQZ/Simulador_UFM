@@ -86,14 +86,14 @@ shinyServer(function(input, output) {
           shinyjs::hidden(sliderInput(inputId = "dosis", label = "Dosis", min = 0, max = 0, value = 0, step = 0))
           }
        else if(input$farmaco == 1){
-          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value = 0)
-          }
+          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mg", value = 0)}
        else if (input$farmaco == 2){
           sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value = 0)}
        else if (input$farmaco == 3){
-          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 0.25, max = 7, post = "mg", value =  0)}
+          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value  = 0)}
        else if (input$farmaco == 4){
-          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mg", value  = 0)}
+          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 0.25, max = 7, post = "mg", value =  0)}
+       
     })
  
 
@@ -133,13 +133,13 @@ shinyServer(function(input, output) {
     #Dopamina
     if(input$farmaco==2){
        
-       newFC <- FC()-25
+       newFC <- FC()-26 *input$dosis/2
        FC(newFC)
        
-       newPAs <- PAs()+52
+       newPAs <- PAs()+52 *input$dosis/2
        PAs(newPAs)
        
-       newPAd <- PAd()+25
+       newPAd <- PAd()+26 *input$dosis/2
        PAd(newPAd)
        
        newSO2 <- SO2()
@@ -153,16 +153,16 @@ shinyServer(function(input, output) {
     #Dobuta
     if(input$farmaco==3){
        
-       newFC <- FC()-24
+       newFC <- FC()-24 *input$dosis/3
        FC(newFC)
        
-       newPAs <- PAs()+35
+       newPAs <- PAs()+36 *input$dosis/3
        PAs(newPAs)
        
-       newPAd <- PAd()+2
+       newPAd <- PAd()+3 *input$dosis/3
        PAd(newPAd)
        
-       newSO2 <- SO2()+14
+       newSO2 <- SO2()+15 *input$dosis/3
        SO2(newSO2)
        
        newFR <- FR()
@@ -172,16 +172,16 @@ shinyServer(function(input, output) {
     #Carvedilol
     if(input$farmaco==4){
        
-       newFC <- FC()-17
+       newFC <- FC()-18.75 *input$dosis/6.25
        FC(newFC)
        
-       newPAs <- PAs()+7
+       newPAs <- PAs()+6.25 *input$dosis/6.25
        PAs(newPAs)
        
-       newPAd <- PAd()-6
+       newPAd <- PAd()-6.25 *input$dosis/6.25
        PAd(newPAd)
        
-       newSO2 <- SO2()+6
+       newSO2 <- SO2()+6.25 *input$dosis/6.25
        SO2(newSO2)
        
        newFR <- FR()
