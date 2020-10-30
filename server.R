@@ -8,6 +8,7 @@
 #
 
 
+
 # Inicio de la app lado del servidor
 
 shinyServer(function(input, output) {
@@ -82,7 +83,7 @@ shinyServer(function(input, output) {
  output$dose <- renderUI(
     {
        if (input$farmaco == 0) {
-          hidden(sliderInput(inputId = "dosis", label = "Dosis", min = 0, max = 0, value = 0, step = 0))
+          shinyjs::hidden(sliderInput(inputId = "dosis", label = "Dosis", min = 0, max = 0, value = 0, step = 0))
           }
        else if(input$farmaco == 1){
           sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value = 0)

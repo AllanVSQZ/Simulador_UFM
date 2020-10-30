@@ -7,11 +7,12 @@
 #    http://shiny.rstudio.com/
 #
 
+
 ## Inicia la interfaz gráfica
 
 
 shinyUI(fluidPage(
-    useShinyjs(),
+    shinyjs::useShinyjs(),
     # CSS
     tags$head(
         tags$style(

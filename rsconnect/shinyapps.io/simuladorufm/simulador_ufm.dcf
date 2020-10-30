@@ -5,6 +5,6 @@ account: simuladorufm
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2907272
-bundleId: 3685371
+bundleId: 3799196
 url: https://simuladorufm.shinyapps.io/simulador_ufm/
-when: 1601428060.97487
+when: 1604026428.48351
