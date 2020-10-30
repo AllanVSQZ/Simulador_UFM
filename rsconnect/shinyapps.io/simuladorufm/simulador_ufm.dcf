@@ -1,0 +1,10 @@
+name: simulador_ufm
+title:
+username:
+account: simuladorufm
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2907272
+bundleId: 3685371
+url: https://simuladorufm.shinyapps.io/simulador_ufm/
+when: 1601428060.97487

@@ -7,45 +7,121 @@
 #    http://shiny.rstudio.com/
 #
 
-library(shiny)
+## Inicia la interfaz gráfica
 
-# Define UI for application that draws a histogram
+
 shinyUI(fluidPage(
-    # Application title
-    titlePanel("MEDTRONIC"),
-
-    # Sidebar with a slider input for number of bins
-    fluidPage(
-        column(width = 3,
-               selectInput("farmaco", label = "Medicamento", c("Ninguno", "Atropina", "Labetalol", "Clonidina", "Metoprolol"), selected = "Ninguno", multiple = F, selectize = T),
-               sliderInput("dosis", label = "Dosis", min = 1, step = 1, max = 5, post = "mg", value = 0)
-
-#            sliderInput("bins",
-#                        "Number of bins:",
-#                        min = 1,
-#                        max = 50,
-#                        value = 30),
-#            # Action button
-#            actionButton("action", label = "Acción"),br(),br(),
-#            # Button link
-#            actionLink("alink", label = "Click me!"),br(),br(),
-#            #Checkbox group
-#            checkboxGroupInput("chkgrp", label = "Choose: ", choices = c("Tutti", "Frutti","Hola", "Hello")),br(),br(),
-#            #Checkbox input
-#            checkboxInput("chkbx", label = "Acepto", value = 1), br(),br(),
-#            numericInput("numeric", label = "Cuántos steps:", min = 0, max = 20, step = 0.1, value = 1),
-#            #submitButton("Refresh")
+    useShinyjs(),
+    # CSS
+    tags$head(
+        tags$style(
+            "body {
+            background-color: black;
+            color: #FFFFFF;
+            font-size: 20px;
+            }
+            h5 {
+            font-family:Helvetica, sans-serif;
+            font-size: 40px;
+            letter-spacing: 0px;
+            word-spacing: 2px;
+            color: #FFFF00;
+            font-weight: bold;
+            text-decoration: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+            }
+            h3 {
+            font-family:Helvetica, sans-serif;
+            font-size: 140px;
+            letter-spacing: 0px;
+            word-spacing: 2px;
+            color: #5BFF00;
+            font-weight: bold;
+            text-decoration: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+            }
+            h4 {
+            font-family:Helvetica, sans-serif;
+            font-size: 40px;
+            letter-spacing: 0px;
+            word-spacing: 2px;
+            color: #FF0000;
+            font-weight: bold;
+            text-decoration: none;
+            font-style: normal;
+            font-variant: normal;
+            text-transform: none;
+            }"
+        )
         ),
-        
-        # Show a plot of the generated distribution
+    # Application title
+        titlePanel("Simulador Cardiopulmonar"),
+
+    # Sidebar con los controles
+        column(width = 3,
+               
+               # Caso
+               textOutput("caso"),
+               br(), hr(), br(),
+               
+               # Selector de medicamento
+               selectInput("farmaco", label = "Medicamento", list("Ninguno" = 0, "Salbutamol" = 1, "Dopamina" = 2, "Dobutamina" = 3, "Carvedilol" = 4), selected = 0 , multiple = F, selectize = T),
+               uiOutput("dose"),
+               submitButton(text = "Seleccionar", icon = NULL, width = NULL),
+               ),
+    
+    # Monitor
         column(width = 9,
-               textOutput("Farmaco")
-#            textOutput("ActionB"),
-#            plotOutput("distPlot", width = "100%"),hr(),
-#            textOutput("output3"),
-#            textOutput("output2"),
-#            textOutput("output4"),
-#            textOutput("output5")
+             # EKG y FC  
+               fluidRow(style = "height:200px;",
+                   column(width = 8,
+                          # Imagen EKG
+                          plotOutput("EKG", width = "105%", height = "300px")
+                          ), 
+                   column(width = 1,
+                          # Lectura de FC
+                          strong("ECG"),img(src='heart.png', align = "right", width="32", height="32"),
+                          br(),
+                          h3(textOutput("lpm")),
+                          "LMP"
+                          )
+                   ),
+             fluidRow(
+                 column(width = 8,
+                        # Imagen PA
+                        plotOutput("PA", width = "105%", height = "300px")
+                        
+                        ),
+                 column(width = 1,
+                        # Lectura de PA
+                        strong("PA"),img(src='meter.png', align = "right", width="32", height="32"),
+                        h4(textOutput("PAs")), "diast.",
+                        h4(textOutput("PAd")),"sist. (mmHg)"
+                        )
+             ),
+             fluidRow(
+                 column(width = 8,
+                        # Imagen respiración
+                        plotOutput("RESP", width = "105%", height = "300px")
+                        
+                 ),
+                 column(width = 1,
+                        # Lectura de SaO2
+                        strong("SaO2"),img(src='pulmones.png', align = "right", width="32", height="32"),
+                        h5(textOutput("SaO2")), "%",br(),br(),
+                        # Lectura de FR
+                        strong("FR"),
+                        h5(textOutput("fr")), "RPM",
+                     
+                     
+                     
+                 )
+             )
         )
     )
-))
+)
+
