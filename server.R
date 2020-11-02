@@ -18,10 +18,10 @@ shinyServer(function(input, output) {
    
    caso <- "Este es un ejemplo del texto del caso, en este no hay porque es paciente estable."
    
-   textocasodobutamina <- ""
-   textocasodopamina <- ""     
-   textocasocarvedilol <- ""
-   textocasocarvedilol <- ""
+   textocasodobutamina <- "Paciente femenina de 79 años de edad, con historia de insuficiencia cardiaca se presenta en emergencia del hospital con dificultad respiratoria aguda. Eñ exámen físico revela disminución en los sonidos pulmonares, con crepitantes difusos bilaterales y edema con fobia menos severo de grado 2 en las rodillas."
+   textocasodopamina <- "Paciente femenina de 49 años de edad, con antecedentes de alcoholismo crónico, y diagnosticada con depresión mayor. Fue admitida a emergencias 4 horas después de la ingesta de 60 pastillas de Disulfiram (15g), 16 de Cronazepam (8mg) y 6 comprimidos de Maprotilina (140mg). La paciente presenta taquipnea, somnolencia y una mala perfusión periférica. Se le reailizó un EKG que revelaba taquicardia sinusal y también se realizó una radiografía de torax que demostró opacidades alveolares bilaterales. Posteriormente su corazón se detiene y se realiza CPR."     
+   textocasosalbutamol <- "Paciente femenina con 3 años de edad, se presenta con dificultad para respirar e hipoactividad. Los padres refieren tos, dificultad respiratoria de 12 horas de evolución, y una fiebre máxima de 38°C. En los antecedentes destaca que es asmática sin medicamento de base."
+   textocasocarvedilol <- "Paciente masculino de 48 años de edad que presenta disnea con 7 días de evolución. Presenta tos, espectoración amarillenta, pero no tiene fiebre ni dolor torácico. No presente historia de isquemia o muerte súbita en su familia. Fue fumador por 5 años, tuvo una hernia hiatal y EPOC leve con ocasional necesidad de tratamiento broncodilatador. Fue diagnosticado a los 24 años con una anomalía coronaria pero ya fue intervenido. Sufrió un infarto agudo al miocardio antes de los 38 años y ha sido ingresado 3 veces en el último año por insuficiencia cardiaca, y 2 veces por dolor torácico."
       
    FC <-  reactiveVal(80)
    PAs <-  reactiveVal(120)
@@ -204,19 +204,22 @@ shinyServer(function(input, output) {
     
     if(input$case==1){
        
-       newFC <- 
+       newFC <- 104
        FC(newFC)
        
-       newPAs <- 
+       newPAs <- 120
        PAs(newPAs)
        
-       newPAd <- 
+       newPAd <- 60
        PAd(newPAd)
        
-       newSO2 <- 
+       newSO2 <- 84
        SO2(newSO2)
        
-       newFR <- 
+       newPCO2 <- 48
+       PCO2(newPCO2)
+       
+       newFR <- 18
        FR(newFR)
        
     }
@@ -224,19 +227,22 @@ shinyServer(function(input, output) {
     #Carvedilol
     if(input$case==2){
        
-       newFC <- 
+       newFC <- 97
        FC(newFC)
        
-       newPAs <- 
+       newPAs <- 113
        PAs(newPAs)
        
-       newPAd <- 
+       newPAd <- 66
        PAd(newPAd)
        
-       newSO2 <- 
+       newSO2 <- 92
        SO2(newSO2)
        
-       newFR <- 
+       newPCO2 <- 34
+       PCO2(newPCO2)
+       
+       newFR <- 18
        FR(newFR)
        
        
@@ -245,38 +251,44 @@ shinyServer(function(input, output) {
     #Dopamina
     if(input$case==3){
        
-       newFC <- 
+       newFC <- 105
        FC(newFC)
        
-       newPAs <- 
+       newPAs <- 68
        PAs(newPAs)
        
-       newPAd <- 
+       newPAd <- 35
        PAd(newPAd)
        
-       newSO2 <- 
+       newSO2 <- 98
        SO2(newSO2)
        
-       newFR <- 
+       newPCO2 <- 66
+       PCO2(newPCO2)
+       
+       newFR <- 18
        FR(newFR)
        
     }
     #Salbutamol
     if(input$case==4){
        
-       newFC <- 
+       newFC <- 105
        FC(newFC)
        
-       newPAs <- 
+       newPAs <- 110
        PAs(newPAs)
        
-       newPAd <- 
+       newPAd <- 73
        PAd(newPAd)
        
-       newSO2 <- 
+       newSO2 <- 95
        SO2(newSO2)
        
-       newFR <- 
+       newPCO2 <- 36
+       PCO2(newPCO2)
+       
+       newFR <- 52
        FR(newFR)
     }
  })
