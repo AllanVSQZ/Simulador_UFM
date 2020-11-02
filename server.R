@@ -207,10 +207,10 @@ shinyServer(function(input, output) {
        newFC <- 104
        FC(newFC)
        
-       newPAs <- 120
+       newPAs <- 85
        PAs(newPAs)
        
-       newPAd <- 60
+       newPAd <- 58
        PAd(newPAd)
        
        newSO2 <- 84
