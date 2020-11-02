@@ -16,8 +16,13 @@ shinyServer(function(input, output) {
    
 # Variables
    
-   caso <<- "Este es un ejemplo del texto del caso, en este no hay porque es paciente estable."
+   caso <- "Este es un ejemplo del texto del caso, en este no hay porque es paciente estable."
    
+   textocasodobutamina <- ""
+   textocasodopamina <- ""     
+   textocasocarvedilol <- ""
+   textocasocarvedilol <- ""
+      
    FC <-  reactiveVal(80)
    PAs <-  reactiveVal(120)
    PAd <-  reactiveVal(60)
@@ -90,7 +95,7 @@ shinyServer(function(input, output) {
        else if (input$farmaco == 2){
           sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value = 0)}
        else if (input$farmaco == 3){
-          sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value  = 0)}
+          sliderInput("dosis", label = "Dosiss por Kg de peso", min = 0, step = 1, max = 5, post = "mcg", value  = 0)}
        else if (input$farmaco == 4){
           sliderInput("dosis", label = "Dosis por Kg de peso", min = 0, step = 0.25, max = 7, post = "mg", value =  0)}
        
@@ -186,8 +191,93 @@ shinyServer(function(input, output) {
        
        newFR <- FR()
        FR(newFR)
+    }
+ })
+ 
+ 
+ # Observador para el selector de casos
+ observeEvent(input$case, {
+    
+    # Casos
+    
+    #Dobutamina
+    
+    if(input$case==1){
+       
+       newFC <- 
+       FC(newFC)
+       
+       newPAs <- 
+       PAs(newPAs)
+       
+       newPAd <- 
+       PAd(newPAd)
+       
+       newSO2 <- 
+       SO2(newSO2)
+       
+       newFR <- 
+       FR(newFR)
+       
+    }
+    
+    #Carvedilol
+    if(input$case==2){
+       
+       newFC <- 
+       FC(newFC)
+       
+       newPAs <- 
+       PAs(newPAs)
+       
+       newPAd <- 
+       PAd(newPAd)
+       
+       newSO2 <- 
+       SO2(newSO2)
+       
+       newFR <- 
+       FR(newFR)
        
        
+    }
+    
+    #Dopamina
+    if(input$case==3){
+       
+       newFC <- 
+       FC(newFC)
+       
+       newPAs <- 
+       PAs(newPAs)
+       
+       newPAd <- 
+       PAd(newPAd)
+       
+       newSO2 <- 
+       SO2(newSO2)
+       
+       newFR <- 
+       FR(newFR)
+       
+    }
+    #Salbutamol
+    if(input$case==4){
+       
+       newFC <- 
+       FC(newFC)
+       
+       newPAs <- 
+       PAs(newPAs)
+       
+       newPAd <- 
+       PAd(newPAd)
+       
+       newSO2 <- 
+       SO2(newSO2)
+       
+       newFR <- 
+       FR(newFR)
     }
  })
  

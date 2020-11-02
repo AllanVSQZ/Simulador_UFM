@@ -65,7 +65,10 @@ shinyUI(fluidPage(
     # Sidebar con los controles
         column(width = 3,
                
-               # Caso
+               # Selector de caso
+               radioButtons("case", "Seleccione el caso", choices = list("Ninguno" = 0, "Dobutamina" = 1, "Carvedilol" = 2, "Dopamina" = 3, "Salbutamol" = 4),selected = 0),
+               
+               # Texto de caso
                textOutput("caso"),
                br(), hr(), br(),
                
