@@ -19,7 +19,7 @@ shinyServer(function(input, output) {
    caso <- "Este es un ejemplo del texto del caso, en este no hay porque es paciente estable."
    
    textocasodobutamina <- "Paciente femenina de 79 años de edad, con historia de insuficiencia cardiaca se presenta en emergencia del hospital con dificultad respiratoria aguda. Eñ exámen físico revela disminución en los sonidos pulmonares, con crepitantes difusos bilaterales y edema con fobia menos severo de grado 2 en las rodillas."
-   textocasodopamina <- "Paciente femenina de 49 años de edad, con antecedentes de alcoholismo crónico, y diagnosticada con depresión mayor. Fue admitida a emergencias 4 horas después de la ingesta de 60 pastillas de Disulfiram (15g), 16 de Cronazepam (8mg) y 6 comprimidos de Maprotilina (140mg). La paciente presenta taquipnea, somnolencia y una mala perfusión periférica. Se le reailizó un EKG que revelaba taquicardia sinusal y también se realizó una radiografía de torax que demostró opacidades alveolares bilaterales. Posteriormente su corazón se detiene y se realiza CPR."     
+   textocasodopamina <- "Paciente femenina de 49 años de edad, con antecedentes de alcoholismo crónico, y diagnosticada con depresión mayor. Fue admitida a emergencias 4 horas después de la ingesta de 60 pastillas de Disulfiram (15g), 16 de Cronazepam (8mg) y 6 comprimidos de Maprotilina (140mg). La paciente presenta taquipnea, somnolencia y una mala perfusión periférica. Se le reailizó un EKG que revelaba taquicardia sinusal y también se realizó una radiografía de torax que demostró opacidades alveolares bilaterales. Posteriormente su corazón se detiene y se realiza CPR."
    textocasosalbutamol <- "Paciente femenina con 3 años de edad, se presenta con dificultad para respirar e hipoactividad. Los padres refieren tos, dificultad respiratoria de 12 horas de evolución, y una fiebre máxima de 38°C. En los antecedentes destaca que es asmática sin medicamento de base."
    textocasocarvedilol <- "Paciente masculino de 48 años de edad que presenta disnea con 7 días de evolución. Presenta tos, espectoración amarillenta, pero no tiene fiebre ni dolor torácico. No presente historia de isquemia o muerte súbita en su familia. Fue fumador por 5 años, tuvo una hernia hiatal y EPOC leve con ocasional necesidad de tratamiento broncodilatador. Fue diagnosticado a los 24 años con una anomalía coronaria pero ya fue intervenido. Sufrió un infarto agudo al miocardio antes de los 38 años y ha sido ingresado 3 veces en el último año por insuficiencia cardiaca, y 2 veces por dolor torácico."
       
@@ -29,8 +29,8 @@ shinyServer(function(input, output) {
    SO2 <-  reactiveVal(98)
    FR <-  reactiveVal(18)
    
-   EKG_x <- 1:192
-   EKG_y <- c(0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0)
+   EKG_x <- reactiveVal(1:192)
+   EKG_y <- reactiveVal(c(0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0,0,0,-3,0,30,0,0,0,-5,25,0,0,-15,80,-25,0))
    PA_x <- 1:198
    PA_y <- c(21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21,21,120,40,45,60,30,25,23,21,19,21)
    SO2_x <- 1:196
@@ -49,11 +49,15 @@ shinyServer(function(input, output) {
    
    output$EKG <- renderPlot({
       par(bg = 'black')
-      plot(EKG_x, EKG_y, col = "green", type = "l", lwd = 3)
+      plot(EKG_x(), EKG_y(), col = "green", type = "l", lwd = 3)
       })
  
    output$caso <- renderText({
-      as.character(caso)
+     if (input$case == 0){}
+     else if (input$case == 1){as.character(textocasodobutamina)}
+     else if (input$case == 2){as.character(textocasocarvedilol)}
+     else if (input$case == 3){as.character(textocasodopamina)}
+     else if (input$case == 4){as.character(textocasosalbutamol)}
       })
    
    output$PAs <- renderText({
@@ -101,8 +105,15 @@ shinyServer(function(input, output) {
        
     })
  
+# Selector de casos (aparece y desaparece)
+ observeEvent(input$case, {
+   if(input$case != 0) {
+     shinyjs::hide("caseselect")
+     shinyjs::show("principal")
+     shinyjs::show("medicamento")
+   }
+ })
 
- 
  
  # Farmacos
  
@@ -216,9 +227,6 @@ shinyServer(function(input, output) {
        newSO2 <- 84
        SO2(newSO2)
        
-       newPCO2 <- 48
-       PCO2(newPCO2)
-       
        newFR <- 18
        FR(newFR)
        
@@ -238,9 +246,6 @@ shinyServer(function(input, output) {
        
        newSO2 <- 92
        SO2(newSO2)
-       
-       newPCO2 <- 34
-       PCO2(newPCO2)
        
        newFR <- 18
        FR(newFR)
@@ -263,9 +268,6 @@ shinyServer(function(input, output) {
        newSO2 <- 98
        SO2(newSO2)
        
-       newPCO2 <- 66
-       PCO2(newPCO2)
-       
        newFR <- 18
        FR(newFR)
        
@@ -285,13 +287,39 @@ shinyServer(function(input, output) {
        newSO2 <- 95
        SO2(newSO2)
        
-       newPCO2 <- 36
-       PCO2(newPCO2)
-       
        newFR <- 52
        FR(newFR)
     }
  })
+ 
+ 
+ observeEvent(FC(),{
+   if (FC() < 40) {
+     newFC <- 0
+     FC(newFC)
+     
+     newPAs <- 0
+     PAs(newPAs)
+     
+     newPAd <- 0
+     PAd(newPAd)
+     
+     newSO2 <- 0
+     SO2(newSO2)
+     
+     newFR <- 0
+     FR(newFR)
+     
+     newEKG_x <- (1:192)
+     EKG_x(newEKG_x)
+     
+     newEKG_y <- rep(0, 192)
+     EKG_y(newEKG_y)
+     
+   }
+   
+ })
+ 
  
  
 }

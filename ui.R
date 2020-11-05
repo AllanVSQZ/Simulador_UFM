@@ -61,25 +61,32 @@ shinyUI(fluidPage(
         ),
     # Application title
         titlePanel("Simulador Cardiopulmonar"),
+    
+    # Selector de caso
+        fluidRow(id = "caseselect",
+                 column(width = 3,
+                  radioButtons("case", "Seleccione el caso", choices = list("Ninguno" = 0, "Dobutamina" = 1, "Carvedilol" = 2, "Dopamina" = 3, "Salbutamol" = 4),selected = 0)
+        ))
+    ,
 
     # Sidebar con los controles
         column(width = 3,
                
-               # Selector de caso
-               radioButtons("case", "Seleccione el caso", choices = list("Ninguno" = 0, "Dobutamina" = 1, "Carvedilol" = 2, "Dopamina" = 3, "Salbutamol" = 4),selected = 0),
                
                # Texto de caso
                textOutput("caso"),
                br(), hr(), br(),
                
                # Selector de medicamento
-               selectInput("farmaco", label = "Medicamento", list("Ninguno" = 0, "Salbutamol" = 1, "Dopamina" = 2, "Dobutamina" = 3, "Carvedilol" = 4), selected = 0 , multiple = F, selectize = T),
+               shinyjs::hidden(fluidRow(id = "medicamento",
+                        column(width = 12,
+               selectInput("farmaco", label = "Medicamento", list("Ninguno" = 0, "Salbutamol" = 1, "Dopamina" = 2, "Dobutamina" = 3, "Carvedilol" = 4), selected = 0 , multiple = F, selectize = T)))),
                uiOutput("dose"),
                submitButton(text = "Seleccionar", icon = NULL, width = NULL),
                ),
     
     # Monitor
-        column(width = 9,
+        shinyjs::hidden(column(width = 9, id = "principal",
              # EKG y FC  
                fluidRow(style = "height:200px;",
                    column(width = 8,
@@ -124,7 +131,7 @@ shinyUI(fluidPage(
                      
                      
                  )
-             )
+             ))
         )
     )
 )
