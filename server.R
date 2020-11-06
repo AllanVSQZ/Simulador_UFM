@@ -317,16 +317,28 @@ shinyServer(function(input, output) {
      EKG_y(newEKG_y)
       
      newPCO2_x <- (1:193)
-     PCO2_y(newPCO2_y) <- rep(0,193)
+     PCO2_x(newPCO2_x)
+      
+     newPCO2_y <- rep(0,193)
+     PCO2_y(newPCO2_y)
       
      newFR_x <- 1:374
-     FR_y(newFR_y) <- rep(0,374)
+     FR_x(newFR_x)
+     
+     newFR_y <- <- rep(0,374)
+     FR_y(newFR_y) 
       
      newPA_x <- (1:198)
-     PA_y(newPA_y) <- rep(0,198)
+     PA_x(newPA_x) 
+      
+     newPA_y <- rep(0,198)
+     PA_y(newPA_y) 
       
      newSO2_x <- 1:196
-     SO2_y(newSO2_y) <- rep(0,196)
+     SO2_x(newSO2_x)
+      
+     newSO2_y <- rep(0,196)
+     SO2_y(newSO2_y) 
      
    }
    
