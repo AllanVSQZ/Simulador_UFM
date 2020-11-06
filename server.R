@@ -70,12 +70,12 @@ shinyServer(function(input, output) {
  
  output$PA <- renderPlot({
    par(bg = 'black')
-   plot(PA_x, PA_y, col = "red", type = "l", lwd = 3)
+   plot(PA_x(), PA_y(), col = "red", type = "l", lwd = 3)
    })
  
  output$RESP <- renderPlot({
     par(bg = 'black')
-    plot(SO2_x, SO2_y, col = "yellow", type = "l", lwd = 3)
+    plot(SO2_x(), SO2_y(), col = "yellow", type = "l", lwd = 3)
     })
  
  output$SaO2 <- renderText({
