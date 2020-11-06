@@ -129,7 +129,7 @@ shinyServer(function(input, output) {
     
     if(input$farmaco==1){
        
-       newFC <- FC() - 70 * input$dosis
+       newFC <- FC() - 25 * input$dosis
        FC(newFC)
        
        newPAs <- PAs()+10* input$dosis
@@ -188,16 +188,16 @@ shinyServer(function(input, output) {
     #Carvedilol
     if(input$farmaco==4){
        
-       newFC <- round(FC()-18.75 *input$dosis/6.25,0)
+       newFC <- round(FC()-17 *input$dosis/6.25,0)
        FC(newFC)
        
-       newPAs <- round(PAs()+6.25 *input$dosis/6.25,0)
+       newPAs <- round(PAs()+7 *input$dosis/6.25,0)
        PAs(newPAs)
        
-       newPAd <- round(PAd()-6.25 *input$dosis/6.25,0)
+       newPAd <- round(PAd()-6 *input$dosis/6.25,0)
        PAd(newPAd)
        
-       newSO2 <- round(SO2()+6.25 *input$dosis/6.25,0)
+       newSO2 <- round(SO2()+6 *input$dosis/6.25,0)
        SO2(newSO2)
        
        newFR <- FR()
