@@ -65,7 +65,7 @@ shinyUI(fluidPage(
     # Selector de caso
         fluidRow(id = "caseselect",
                  column(width = 3,
-                  radioButtons("case", "Seleccione el caso", choices = list("Ninguno" = 0, "Dobutamina" = 1, "Carvedilol" = 2, "Dopamina" = 3, "Salbutamol" = 4),selected = 0)
+                  radioButtons("case", "Seleccione el caso", choices = list("Ninguno" = 0, "Caso 1" = 1, "Caso 2" = 2, "Caso 3" = 3, "Caso 4" = 4),selected = 0)
         ))
     ,
 
