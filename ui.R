@@ -86,7 +86,7 @@ shinyUI(fluidPage(
                ),
     
     # Monitor
-        shinyjs::hidden(column(width = 9, id = "principal",
+        (column(width = 9, id = "principal",
              # EKG y FC  
                fluidRow(style = "height:200px;",
                    column(width = 8,
