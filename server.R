@@ -114,6 +114,14 @@ shinyServer(function(input, output) {
    }
  })
 
+# Alerta de presión sistólica
+observeEvent(FC(), {
+  if(PAs() > 200 | FC() ==0) {
+    shinyjs::show("alert")
+  }
+}) 
+ 
+
  
  # Farmacos
  

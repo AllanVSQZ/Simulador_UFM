@@ -56,7 +56,59 @@ shinyUI(fluidPage(
             font-style: normal;
             font-variant: normal;
             text-transform: none;
-            }"
+            }
+            @-webkit-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-moz-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@-o-keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+.bli {
+    -webkit-animation: blink 1s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation: blink 1s;
+    -moz-animation-iteration-count: infinite;
+    -o-animation: blink 1s;
+    -o-animation-iteration-count: infinite;
+}
+"
+            
         )
         ),
     # Application title
@@ -83,10 +135,13 @@ shinyUI(fluidPage(
                selectInput("farmaco", label = "Medicamento", list("Ninguno" = 0, "Salbutamol" = 1, "Dopamina" = 2, "Dobutamina" = 3, "Carvedilol" = 4), selected = 0 , multiple = F, selectize = T)))),
                uiOutput("dose"),
                submitButton(text = "Seleccionar", icon = NULL, width = NULL),
+               shinyjs::hidden(fluidRow(id = "alert",
+                   img(src='alert.png', class = "bli", align = "right", width="64", height="64")))
                ),
     
     # Monitor
-        (column(width = 9, id = "principal",
+    # shinyjs::hidden    
+    (column(width = 9, id = "principal",
              # EKG y FC  
                fluidRow(style = "height:200px;",
                    column(width = 8,
@@ -97,7 +152,7 @@ shinyUI(fluidPage(
                           # Lectura de FC
                           strong("ECG"),img(src='heart.png', align = "right", width="32", height="32"),
                           br(),
-                          h3(textOutput("lpm")),
+                          h3(textOutput("lpm")),shinyjs::hidden(img(src='alert.png', class = "bli", align = "right", width="32", height="32")),
                           "LMP"
                           )
                    ),
@@ -110,8 +165,8 @@ shinyUI(fluidPage(
                  column(width = 1,
                         # Lectura de PA
                         strong("PA"),img(src='meter.png', align = "right", width="32", height="32"),
-                        h4(textOutput("PAs")), "diast.",
-                        h4(textOutput("PAd")),"sist. (mmHg)"
+                        h4(textOutput("PAs")),shinyjs::hidden(img(id= "alert-PAs", src='alert.png', class = "bli", align = "right", width="32", height="32")), "diast.",
+                        h4(textOutput("PAd")),shinyjs::hidden(img(src='alert.png', class = "bli", align = "right", width="32", height="32")),"sist. (mmHg)"
                         )
              ),
              fluidRow(
@@ -123,10 +178,10 @@ shinyUI(fluidPage(
                  column(width = 1,
                         # Lectura de SaO2
                         strong("SaO2"),img(src='pulmones.png', align = "right", width="32", height="32"),
-                        h5(textOutput("SaO2")), "%",br(),br(),
+                        h5(textOutput("SaO2")),shinyjs::hidden(img(src='alert.png', class = "bli", align = "right", width="32", height="32")), "%",br(),br(),
                         # Lectura de FR
                         strong("FR"),
-                        h5(textOutput("fr")), "RPM",
+                        h5(textOutput("fr")),shinyjs::hidden(img(src='alert.png', class = "bli", align = "right", width="32", height="32")), "RPM",
                      
                      
                      
